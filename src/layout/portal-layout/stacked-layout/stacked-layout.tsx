@@ -3,6 +3,8 @@ import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline';
 import { Fragment } from 'react';
 import { Link, LinkProps, Outlet, useMatch, useResolvedPath } from 'react-router-dom';
 
+import logo from '../../../assets/logos/logo.png';
+
 const user = {
   name: 'Tom Cook',
   email: 'tom@example.com',
@@ -12,9 +14,7 @@ const user = {
 const navigation = [
   { name: 'Dashboard', to: '/dashboard', current: true },
   { name: 'Users', to: '/users', current: false },
-  { name: 'Projects', to: '/projects', current: false },
-  { name: 'Calendar', to: '/calendar', current: false },
-  { name: 'Reports', to: '/reports', current: false },
+  { name: 'Patients', to: '/patients', current: false },
 ];
 const userNavigation = [
   { name: 'Your Profile', href: '#' },
@@ -47,8 +47,8 @@ function StyledLink({ children, to, ...props }: LinkProps) {
 export default function StackedLayout() {
   return (
     <>
-      <div className='min-h-full'>
-        <Disclosure as='nav' className='bg-indigo-600'>
+      <div className='h-screen w-full flex flex-col'>
+        <Disclosure as='nav' className='bg-indigo-600 flex-shrink-0 flex-grow-0'>
           {({ open }) => (
             <>
               <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
@@ -56,7 +56,7 @@ export default function StackedLayout() {
                   <div className='flex items-center'>
                     <div className='flex-shrink-0'>
                       <Link to={'/'}>
-                        <img className='h-8 w-8' src='images/logo.png' alt='Coffee and Code Logo' />
+                        <img className='w-12' src={logo} alt='Coffee and Code Logo' />
                       </Link>
                     </div>
                     <div className='hidden md:block'>
@@ -185,12 +185,13 @@ export default function StackedLayout() {
           )}
         </Disclosure>
 
-        <header className='bg-white shadow-sm'>
+        <header className='bg-white shadow-sm z-10 flex-shrink-0 flex-grow-0'>
           <div className='max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8'>
-            <h1 className='text-lg leading-6 font-semibold text-gray-900'>Dashboard</h1>
+            <h1 className='text-lg leading-6 font-semibold text-gray-900'>Nguyễn Văn A</h1>
           </div>
         </header>
-        <main>
+
+        <main className='flex-grow overflow-auto'>
           <div className='max-w-7xl mx-auto py-6 sm:px-6 lg:px-8'>
             {/* Replace with your content */}
             <Outlet />

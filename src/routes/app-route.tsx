@@ -1,6 +1,7 @@
 import { RouteObject } from 'react-router-dom';
 
 import { NotFoundPage } from '@/core/error';
+import patientsRoutes from '@/features/patients/routes';
 
 import authRoutes from '../features/auth/routes';
 import dashboardRoutes from '../features/dashboard/routes';
@@ -19,7 +20,7 @@ const appRoutes: Array<RouteObject> = [
   {
     path: '/',
     element: <PortalLayout />,
-    children: [...dashboardRoutes, ...usersRoutes],
+    children: [...dashboardRoutes, ...usersRoutes, ...patientsRoutes],
   },
   {
     path: '*',
